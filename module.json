@@ -70,7 +70,7 @@
   },
   "url": "https://github.com/symphonymarie/IM-Auto-Attack",
   "manifest": "https://github.com/symphonymarie/IM-Auto-Attack/module.json",
-  "download": "https://github.com/symphonymarie/IM-Auto-Attack/IMAA-Auto-Attack.zip"
+  "download": "https://github.com/symphonymarie/IM-Auto-Attack/releases/download/alpha1/IM-Auto-Attack.zip"
 },
 "relationships": {
   "recommends": [
