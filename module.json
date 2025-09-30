@@ -5,7 +5,9 @@
   "version": "1.0.0",
   "authors": [
     {
-      "name": "Symphony Marie"
+      "name": "Symphony Marie",
+      "url": "https://github.com/symphonymarie/",
+      "discord": "symphonym",
     }
   ],
   "scripts": [
@@ -14,6 +16,10 @@
   "styles": [
     "styles/IMAA-token-manager.css"
   ],
+  "url": "https://github.com/symphonymarie/IM-Auto-Attack/",
+  "flags": {
+    "canUpload": true
+  },
   "packs": [
   {
     "name": "imaa-misc-macros",
@@ -59,10 +65,19 @@
     }
   ],
   "compatibility": {
-    "minimum": "10",
-    "verified": "11"
+    "minimum": "13",
+    "verified": "13"
   },
   "url": "https://github.com/symphonymarie/IM-Auto-Attack",
   "manifest": "https://github.com/symphonymarie/IM-Auto-Attack/module.json",
   "download": "https://github.com/symphonymarie/IM-Auto-Attack/IMAA-Auto-Attack.zip"
+},
+"relationships": {
+  "recommends": [
+    {
+      "id": "warhammer-lib",
+      "type": "module",
+      "compatibility": {}
+    }
+  ]
 }
