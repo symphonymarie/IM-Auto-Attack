@@ -1,0 +1,67 @@
+.IMAA-token-manager {
+  padding: 10px 0;
+}
+
+.IMAA-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+  background: linear-gradient(128deg, rgb(28, 49, 50) 0%, #124549 100%);
+  color: #DDD;
+}
+
+.IMAA-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.IMAA-action-btn {
+  text-align: left;
+  padding: 8px 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--impmal-darkblue);
+  border: 2px solid var(--impmal-lightblue);
+  border-radius: 5px;
+  color: white;
+  transition: background-color 1s;
+}
+
+.IMAA-action-btn:hover {
+  background-color: var(--impmal-lightblue);
+}
+
+.IMAA-selected-tokens {
+  border-top: 2px solid var(--impmal-lightblue);
+  padding-top: 10px;
+  font-size: 0.8em;
+  color: #FFF;
+  margin-bottom: 10px;
+}
+
+.IMAA-note {
+  font-size: 0.7em;
+  color: #ff6b6b;
+  padding: 5px;
+  background: #fff3f3;
+  border-radius: 3px;
+  text-align: center;
+}
+.IMAA-grid.header {
+    background: linear-gradient(180deg, rgba(37, 100, 75, 0.5), 90%, rgba(66, 207, 125, 0.8) 100%);
+    box-shadow: 0px 3px 10px rgba(66, 207, 125, 0.8);
+    border-bottom: 1px solid rgba(66, 207, 125, 0.8);
+    position: relative;
+  }
+
+  .IMAA-uuid-status {
+    font-size: 0.8em;
+    padding: 5px;
+    background: linear-gradient(180deg, rgba(37, 100, 75, 0.5), 90%, rgba(66, 207, 125, 0.8) 100%);
+    color: #FFF;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
