@@ -1,83 +1,59 @@
 {
-  "id": "IMAuto-Attack",
-  "title": "Imperium Maledictum Auto-Attack",
-  "description": "Adds auto-attack functions and IMAA token management controls to the token HUD",
+  "id": "im-auto-attack",
+  "title": "IM-Auto-Attack",
   "version": "1.0.0",
-  "authors": [
-    {
-      "name": "Symphony Marie",
-      "url": "https://github.com/symphonymarie/",
-      "discord": "symphonym",
-    }
-  ],
-  "scripts": [
-    "scripts/IMAA-token-manager.js"
-  ],
-  "styles": [
-    "styles/IMAA-token-manager.css"
-  ],
-  "url": "https://github.com/symphonymarie/IM-Auto-Attack/",
-  "flags": {
-    "canUpload": true
-  },
-  "packs": [
-  {
-    "name": "imaa-misc-macros",
-    "label": "IMAA Misc Macros",
-    "path": "packs/imaa-misc-macros.db",
-    "type": "Macro",
-    "system": "impmal"
-  },
-  {
-    "name": "imaa-combat-macros", 
-    "label": "IMAA Combat Macros",
-    "path": "packs/imaa-combat-macros.db",
-    "type": "Macro",
-    "system": "impmal"
-  },
-  {
-    "name": "imaa-bulk-token-macros",
-    "label": "IMAA Bulk Token Macros",
-    "path": "packs/imaa-bulk-token-macros.db",
-    "type": "Macro", 
-    "system": "impmal"
-  },
-  {
-    "name": "imaa-loot-tables",
-    "label": "IMAA Loot Tables",
-    "path": "packs/imaa-loot-tables.db",
-    "type": "RollTable",
-    "system": "impmal"
-  },
-  {
-    "name": "imaa-token-manager-items",
-    "label": "IMAA Token Manager Items",
-    "path": "packs/imaa-token-manager-items.db",
-    "type": "Item",
-    "system": "impmal"
-  }
-],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
   "compatibility": {
     "minimum": "13",
     "verified": "13"
   },
-  "url": "https://github.com/symphonymarie/IM-Auto-Attack",
-  "manifest": "https://github.com/symphonymarie/IM-Auto-Attack/module.json",
-  "download": "https://github.com/symphonymarie/IM-Auto-Attack/releases/download/alpha1/IM-Auto-Attack.zip"
-},
-"relationships": {
-  "recommends": [
+  "description": "<div class=\"markdown-heading\" dir=\"auto\"><h1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">IM-Auto-Attack</h1></div><p dir=\"auto\">An Imperium Maledictum auto-attack module for Foundry, with additional bulk token manager controls</p><div class=\"markdown-heading\" dir=\"auto\"><h2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">Target Prioritization</h2></div><ul dir=\"auto\"><li>Hostile tokens will prioritize the closest player, friendly, and neutral target, in that order. If the target is out of \"arm's reach\" (within a square) it will ask if you would like to use a ranged attack or cancel and move.</li><li>Friendly and Neutral tokens will prioritize the closest hostile target. If the target is out of \"arm's reach\" (within a square) it will ask if you would like to use a ranged attack or cancel and move.</li></ul><div class=\"markdown-heading\" dir=\"auto\"><h2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">Setting up default attacks</h2></div><p dir=\"auto\">The macro will look for powers, weapons, or attacks with an * at the end of the name, i.e. <em>\"Rending Claws*\"</em>. For ranged attacks, it will look for *<strong>R</strong>, i.e. <em>\"Heavy Bolter *R\"</em>. The macro will randomly choose an attack from found options if more than one item on the token's sheet has a * or *<strong>R</strong> indicator.</p><blockquote><div class=\"markdown-heading\" dir=\"auto\"><h3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">A note about the first turn in an encounter:</h3></div><p dir=\"auto\">If a token with auto-attack is up first when combat first begins, the macro will select a target but not roll a default attack, in case you would like to set up the battlefield before starting the encounter properly. You can roll a default attack using the DefaultAttack.js macro when you are ready to begin. All tokens following the first turn that have the auto-attack trait will try to set up an auto-attack on their turn. I might change this functionality in the future if there's a demand for it.</p></blockquote><div class=\"markdown-heading\" dir=\"auto\"><h2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">Bulk Token Actions</h2></div><ul dir=\"auto\"><li><p>Clear Effects</p><p dir=\"auto\">Clears all status effects on all selected tokens.</p></li><li><p>Reset Wounds</p><p dir=\"auto\">Resets wounds to 0 on all selected tokens.</p></li><li><p>Set Name</p><p dir=\"auto\">Enter a name for all selected tokens.</p></li><li><p>Set Name Display</p><p dir=\"auto\">Configure visibility of name on all selected tokens.</p></li><li><p>Set Wounds Display</p><p dir=\"auto\">Configure visibility of wounds on all selected tokens.</p></li><li><p>Set Image</p><p dir=\"auto\">Set an image as the artwork for all selected tokens. Uses a skull as default.</p></li><li><p>BulkTokenLights</p><p dir=\"auto\">Set a light effect on selected tokens. If the tokens already have a light, it turns them off.</p></li></ul><div class=\"markdown-heading\" dir=\"auto\"><h2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">Macros</h2></div><div class=\"markdown-heading\" dir=\"auto\"><h2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\">Combat Macros</h2></div><p dir=\"auto\">Standalone combat macros, to be used with or without auto-combat.</p><ul dir=\"auto\"><li><p>Auto-Target</p></li><li><p>Target Player</p></li><li><p>Default Attack</p></li></ul>",
+  "authors": [
     {
-      "id": "warhammer-lib",
-      "type": "module",
-      "compatibility": {}
+      "name": "Symphony",
+      "url": "https://github.com/symphonymarie/IM-Auto-Attack",
+      "flags": {}
     }
-  ]
+  ],
+  "url": "https://github.com/symphonymarie/IM-Auto-Attack",
+  "flags": {
+    "canUpload": true
+  },
+    "styles": [
+    "./styles/IMAA-token-manager.css"
+  ],
+  "packs": [
+    {
+      "name": "IMAUTOCOMBAT_Items",
+      "label": "IM Auto-Combat Items",
+      "path": "./packs/IMAUTOCOMBAT_Items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "impmal",
+      "flags": {}
+    },
+    {
+      "name": "IMAUTOCOMBAT_Macros",
+      "label": "IM Auto-Combat Macros",
+      "path": "./packs/IMAUTOCOMBAT_Macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "impmal",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "requires": [
+      {
+        "id": "warhammer-lib",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  }
 }
