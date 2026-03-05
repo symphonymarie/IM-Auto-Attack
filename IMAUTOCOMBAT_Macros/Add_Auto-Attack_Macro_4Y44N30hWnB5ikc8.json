@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "Add Auto-Attack",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/combat.svg",
+  "scope": "global",
+  "command": "// Add Auto-Attack to all selected actors, but skip ones that already have it\nconst selectedTokens = canvas.tokens.controlled;\n\nif (selectedTokens.length === 0) {\n  ui.notifications.warn(\"No tokens selected.\");\n  return;\n}\n\n// Set your Auto-Attack UUID here\nconst traitUUID = \"Item.j6BaZs9wW871CgFj\";\n\nconst traitItem = await fromUuid(traitUUID);\nif (!traitItem) {\n  ui.notifications.error(\"Trait item not found with the provided UUID.\");\n  return;\n}\n\nlet addedCount = 0;\nlet skippedCount = 0;\nconst results = [];\n\nfor (const t of selectedTokens) {\n  const actor = t.actor;\n  if (!actor) continue;\n\n  // Check if this actor already has an item created from the UUID,\n  // or (fallback) an item with the same name.\n  const alreadyHas = actor.items.some(i =>\n    i.getFlag?.(\"core\", \"sourceId\") === traitUUID ||\n    i.name === traitItem.name\n  );\n\n  if (alreadyHas) {\n    skippedCount++;\n    results.push(`Skipped (already has): ${actor.name}`);\n    continue;\n  }\n\n  await actor.createEmbeddedDocuments(\"Item\", [traitItem.toObject()]);\n  addedCount++;\n  results.push(`Added to: ${actor.name}`);\n}\n\nconst total = selectedTokens.length;\nui.notifications.info(\n  `Processed ${total} token(s): Added ${addedCount}, Skipped ${skippedCount}.`\n);\nconsole.log(results.join(\"\\n\"));",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674225211,
+    "modifiedTime": 1772674269668,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 2,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "4Y44N30hWnB5ikc8",
+  "sort": 100000
+}

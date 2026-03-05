@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "Reset Wounds",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/blood.svg",
+  "scope": "global",
+  "command": "const selectedTokens = canvas.tokens.controlled;\n\nif (selectedTokens.length === 0) {\n    ui.notifications.warn(\"Please select one or more tokens first.\");\n} else {\n    let updatedCount = 0;\n    \n    for (const tkn of selectedTokens) {\n        if (tkn.actor) {\n            try {\n                tkn.actor.update({\"system.combat.wounds.value\" : 0});\n                updatedCount++;\n            } catch (error) {\n                console.error(`Failed to update wounds for token ${tkn.name}:`, error);\n            }\n        }\n    }\n    \n    ui.notifications.info(`Reset wounds for ${updatedCount} out of ${selectedTokens.length} selected tokens.`);\n}",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674246555,
+    "modifiedTime": 1772674269668,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 2,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "9Z5bHd0gYHHxFJro",
+  "sort": 600000
+}

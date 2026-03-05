@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "TargetPlayer",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/ice-aura.svg",
+  "scope": "global",
+  "command": "const token = canvas.tokens.controlled[0];\nif (!token) {\n    ui.notifications.warn(\"Please select a token first.\");\n    return;\n}\n\n// Get all player-owned tokens\nconst playerTokens = canvas.tokens.placeables.filter(t => \n    t.actor && t.actor.hasPlayerOwner && !t.document.hidden\n);\n\nif (playerTokens.length === 0) {\n    ui.notifications.warn(\"No player tokens found.\");\n    return;\n}\n\n// Find nearest player token\nconst nearest = playerTokens.reduce((closest, t) => {\n    if (t.id === token.id) return closest; // Skip self\n    \n    const distance = canvas.grid.measureDistance(token.center, t.center);\n    return !closest || distance < closest.distance ? \n        { token: t, distance } : closest;\n}, null);\n\nif (!nearest) {\n    ui.notifications.warn(\"No valid targets found.\");\n    return;\n}\n\n// Target the nearest token\nnearest.token.setTarget(true, { user: game.user, releaseOthers: true });\nui.notifications.info(`Targeting ${nearest.token.name}`);",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674269576,
+    "modifiedTime": 1772674269668,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 0,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "E56yxgRCuwIWX0lK",
+  "sort": 200000
+}

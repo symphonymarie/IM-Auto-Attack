@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "Remove all effects",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/aura.svg",
+  "scope": "global",
+  "command": "for (const tkn of canvas.tokens.controlled) {\n\nconst removeList = tkn.actor.temporaryEffects.map(e => e.id);\n\nawait tkn.actor.deleteEmbeddedDocuments(\"ActiveEffect\", removeList)\n\n}",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674249985,
+    "modifiedTime": 1772674269668,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 2,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "FOONilvfNfE5rh7d",
+  "sort": 700000
+}

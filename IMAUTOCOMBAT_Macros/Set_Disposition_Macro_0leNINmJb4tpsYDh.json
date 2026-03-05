@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "Set Disposition",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "// Get selected tokens\nconst selectedTokens = canvas.tokens.controlled;\n\nif (selectedTokens.length === 0) {\n    ui.notifications.warn(\"Please select one or more tokens first.\");\n    return;\n}\n\n// Create dialog with disposition dropdown\nnew Dialog({\n    title: \"Set Token Disposition\",\n    content: `\n        <div style=\"display: flex; flex-direction: column; gap: 10px; padding: 10px;\">\n            <label for=\"disposition-select\">Select Disposition:</label>\n            <select id=\"disposition-select\" style=\"margin-bottom: 10px;\">\n                <option value=\"${CONST.TOKEN_DISPOSITIONS.HOSTILE}\">Hostile</option>\n                <option value=\"${CONST.TOKEN_DISPOSITIONS.NEUTRAL}\">Neutral</option>\n                <option value=\"${CONST.TOKEN_DISPOSITIONS.FRIENDLY}\">Friendly</option>\n            </select>\n            <p>This will affect ${selectedTokens.length} selected token(s)</p>\n        </div>\n    `,\n    buttons: {\n        set: {\n            icon: '<i class=\"fas fa-check\"></i>',\n            label: \"Set Disposition\",\n            callback: (html) => {\n                const disposition = parseInt(html.find('#disposition-select').val());\n                \n                // Update all selected tokens\n                const updates = selectedTokens.map(token => ({\n                    _id: token.id,\n                    disposition: disposition\n                }));\n                \n                // Batch update all tokens\n                canvas.scene.updateEmbeddedDocuments('Token', updates);\n                \n                ui.notifications.info(`Set disposition for ${selectedTokens.length} token(s)`);\n            }\n        },\n        cancel: {\n            icon: '<i class=\"fas fa-times\"></i>',\n            label: \"Cancel\"\n        }\n    },\n    default: \"set\"\n}).render(true);",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674270576,
+    "modifiedTime": 1772674270576,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 0,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "0leNINmJb4tpsYDh",
+  "sort": 0
+}

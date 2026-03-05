@@ -1,0 +1,27 @@
+{
+  "folder": null,
+  "name": "Remove Auto-Attack",
+  "type": "script",
+  "author": "bdkscQBpCuFLv9Wx",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "// Remove Auto-Attack from all selected actors\nconst selectedTokens = canvas.tokens.controlled;\n\nif (selectedTokens.length === 0) {\n  ui.notifications.warn(\"No tokens selected.\");\n  return;\n}\n\n// Use the same UUID you used to add the ability\nconst traitUUID = \"Item.j6BaZs9wW871CgFj\";\n\n// Try to resolve the source item so we can fall back to its name if needed\nlet traitItem = null;\ntry {\n  traitItem = await fromUuid(traitUUID);\n} catch (err) {\n  console.warn(\"Could not resolve trait UUID; will only try sourceId matching.\", err);\n}\n\nlet totalRemoved = 0;\nlet actorsTouched = 0;\n\nfor (const token of selectedTokens) {\n  const actor = token.actor;\n  if (!actor) continue;\n\n  // Find items on the actor that either:\n  // 1) were created from this UUID (core.sourceId), or\n  // 2) have the same name as the source item (fallback)\n  const toRemove = actor.items.filter(i =>\n    i.getFlag?.(\"core\", \"sourceId\") === traitUUID ||\n    (traitItem && i.name === traitItem.name)\n  );\n\n  if (toRemove.length > 0) {\n    await actor.deleteEmbeddedDocuments(\n      \"Item\",\n      toRemove.map(i => i.id)\n    );\n    totalRemoved += toRemove.length;\n    actorsTouched += 1;\n    console.log(`Removed ${toRemove.length} item(s) from ${actor.name}:`, toRemove.map(i => i.name));\n  } else {\n    console.log(`No matching item found on ${actor.name}.`);\n  }\n}\n\nif (totalRemoved > 0) {\n  ui.notifications.info(`Removed ${totalRemoved} item(s) from ${actorsTouched} actor(s).`);\n} else {\n  ui.notifications.warn(\"No matching items found to remove. Double-check the UUID or item name.\");\n}",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "impmal",
+    "systemVersion": "3.3.0",
+    "createdTime": 1772674245486,
+    "modifiedTime": 1772674269668,
+    "lastModifiedBy": "bdkscQBpCuFLv9Wx"
+  },
+  "ownership": {
+    "default": 0,
+    "bdkscQBpCuFLv9Wx": 3
+  },
+  "_id": "gIUyc4PfXDtqAAZD",
+  "sort": 500000
+}
